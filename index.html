@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Bookstore</h1>
+            <div class="auth-links">
+                <button id="loginButton">Login</button>
+                <button id="signUpButton">Sign Up</button>
+            </div>
+        </header>
+
+        <div class="book-list-section">
+            <input class="search-box" type="text" placeholder="Search books..." />
+            <select class="sort-box">
+                <option value="title">Sort by Title</option>
+                <option value="rating">Sort by Rating</option>
+                <option value="year">Sort by Year</option>
+            </select>
+            <div class="book-list"></div>
+        </div>
+    </div>
+
+
+    <div id="loginModal" class="auth-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeLoginModal">&times;</span>
+            <h2>Login</h2>
+            <input id="loginEmail" type="email" placeholder="Email" />
+            <input id="loginPassword" type="password" placeholder="Password" />
+            <button id="loginSubmit">Login</button>
+        </div>
+    </div>
+
+
+    <div id="signUpModal" class="auth-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeSignUpModal">&times;</span>
+            <h2>Sign Up</h2>
+            <input id="signUpEmail" type="email" placeholder="Email" />
+            <input id="signUpPassword" type="password" placeholder="Password" />
+            <button id="signUpSubmit">Sign Up</button>
+        </div>
+    </div>
+
+    <script src="./main.js"></script>
+
+
+</body>
+
+</html>

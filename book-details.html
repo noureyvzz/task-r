@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="book-detail-container">
+        <img id="book-cover" src="" alt="Book Cover" />
+        <div class="book-info">
+            <h1 id="book-title"></h1>
+            <p id="book-author"></p>
+            <p id="book-genre"></p>
+            <p id="book-year"></p>
+            <p id="book-rating"></p>
+            <p id="book-pages"></p>
+            <button onclick="goBack()">Back to Book List</button>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookId = urlParams.get('id');
+
+        async function fetchBookDetails(bookId) {
+            try {
+                const response = await fetch('http://localhost:5000/books/' + bookId);
+                const book = await response.json();
+
+                document.getElementById('book-cover').src = book.coverImage;
+                document.getElementById('book-title').innerText = book.title;
+                document.getElementById('book-author').innerText = `Author ID: ${book.authorId}`;
+                document.getElementById('book-genre').innerText = `Genre: ${book.genre}`;
+                document.getElementById('book-year').innerText = `Year: ${book.publicationYear}`;
+                document.getElementById('book-rating').innerText = `Rating: ${book.rating}`;
+                document.getElementById('book-pages').innerText = `Pages: ${book.pages}`;
+            } catch (error) {
+                console.error('Error fetching book details:', error);
+            }
+        }
+
+        fetchBookDetails(bookId);
+
+        function goBack() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>
